@@ -27,6 +27,6 @@ for ib,ia in enumerate(model):
 # predict_multiple(
 #     checkpoints_path=checkpoints_path[0],
 #     inp_dir="demo/images_preped_test_small/",
-#     out_dir="demo/outputaaa"
+#     out_dir="demo/output"
 # )
 
