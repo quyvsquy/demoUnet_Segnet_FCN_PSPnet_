@@ -189,7 +189,8 @@ def predict_multiple(model=None, inps=None, inp_dir=None, out_dir=None,
             out_fname = None
         else:
             if isinstance(inp, six.string_types):
-                out_fname = os.path.join(out_dir, os.path.basename(inp))
+                temp = os.path.basename(inp).split(".")
+                out_fname = os.path.join(out_dir, f"{temp[0]}_{checkpoints_path}.{temp[1]}")
             else:
                 out_fname = os.path.join(out_dir, str(i) + ".jpg")
 
