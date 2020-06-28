@@ -8,6 +8,6 @@ checkpoints_path.append("./saveModel/fcn_32_vgg_1")
 for ia in checkpoints_path:
 	predict_multiple(
 		checkpoints_path=ia,
-		inp_dir="demo/images_preped_test_small/",
+		inp_dir="demo/images_preped_test_small",
 		out_dir="demo/output"
-)
+	)

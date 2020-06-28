@@ -190,9 +190,11 @@ def predict_multiple(model=None, inps=None, inp_dir=None, out_dir=None,
         else:
             if isinstance(inp, six.string_types):
                 temp = os.path.basename(inp).split(".")
-                out_fname = os.path.join(out_dir, f"{temp[0]}_{checkpoints_path}.{temp[1]}")
+                out_fname = os.path.join(out_dir, f"{temp[0]}_{checkpoints_path.split('/')[-1]}.{temp[1]}")
+                # out_fname = os.path.join(out_dir, f"{os.path.basename(inp)}")
             else:
                 out_fname = os.path.join(out_dir, str(i) + ".jpg")
+                # out_fname = os.path.join(out_dir, str(i) + ".jpg")
 
         pr = predict(model, inp, out_fname,
                      overlay_img=overlay_img, class_names=class_names,
