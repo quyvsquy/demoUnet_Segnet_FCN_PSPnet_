@@ -1,7 +1,7 @@
 data/
 dataset1/
 saveModel/
-
+auto_deploy_colab.sh 
 sync.expect
 
 

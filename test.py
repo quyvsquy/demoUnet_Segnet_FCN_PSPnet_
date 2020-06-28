@@ -17,11 +17,11 @@ checkpoints_path.append("./saveModel/fcn_32_vgg_1")
 for ia in model_name:
     model.append(model_from_name[ia](n_classes=30 ,  input_height=384, input_width=576))
 
-for ia in model:
+for ib,ia in enumerate(model):
     ia.train(
         train_images =  "dataset1/images_prepped_train/",
         train_annotations = "dataset1/annotations_prepped_train/",
-        checkpoints_path = checkpoints_path[0] , epochs=5
+        checkpoints_path = checkpoints_path[ib] , epochs=5
     )
 
 # predict_multiple(
