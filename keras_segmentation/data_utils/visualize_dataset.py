@@ -42,7 +42,7 @@ def visualize_segmentation_dataset(images_path, segs_path, n_classes,
 
         # Get the colors for the classes
         colors = class_colors
-
+        listSeg_img = []
         print("Please press any key to display the next image")
         for im_fn, seg_fn in img_seg_pairs:
             img = cv2.imread(im_fn)
@@ -53,10 +53,14 @@ def visualize_segmentation_dataset(images_path, segs_path, n_classes,
                                                     img, seg, colors,
                                                     n_classes,
                                                     do_augment=do_augment)
-            print("Please press any key to display the next image")
-            cv2.imshow("img", img)
-            cv2.imshow("seg_img", seg_img)
-            cv2.waitKey()
+            if not no_show:
+                print("Please press any key to display the next image")
+                cv2.imshow("img", img)
+                cv2.imshow("seg_img", seg_img)
+                cv2.waitKey()
+            else:
+                listSeg_img.append((seg_img, seg_fn))
+        return listSeg_img
     except DataLoaderError as e:
         print("Found error during data loading\n{0}".format(str(e)))
         return False
