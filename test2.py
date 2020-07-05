@@ -3,8 +3,8 @@ import matplotlib.pyplot as plt
 from PIL import Image
 from os import listdir
 listName = ['0016E5_07530','0016E5_08159']
-# listNameNet = ['vgg_unet','vgg_pspnet','vgg_segnet','fcn_32_vgg']
-listNameNet = ['vgg_unet','vgg_pspnet','vgg_segnet']
+listNameNet = ['vgg_unet','vgg_pspnet','vgg_segnet','fcn_32_vgg']
+# listNameNet = ['vgg_unet','vgg_pspnet','vgg_segnet']
 ground_truth = "demo/ground_truth"
 pre_dict = "demo/output/New"
 in_img = "demo/images_preped_test_small"
@@ -32,11 +32,11 @@ axes[2,0].set_xlabel("ground_truth")
 
 for ia in listdir(pre_dict):
     if listName[0] in ia:
-        for ib in range(1,4):
+        for ib in range(1,5):
             axes[1,ib].imshow(Image.open(f"{pre_dict}/{listName[0]}_{listNameNet[ib-1]}_1.png"))
             axes[1,ib].set_xlabel(listNameNet[ib-1])
     elif listName[1] in ia:
-        for ib in range(1,4):
+        for ib in range(1,5):
             axes[2,ib].imshow(Image.open(f"{pre_dict}/{listName[1]}_{listNameNet[ib-1]}_1.png"))
             axes[2,ib].set_xlabel(listNameNet[ib-1])
     
