@@ -1,5 +1,4 @@
 from keras_segmentation.models.all_models import model_from_name
-# from keras_segmentation.predict import predict_multiple
 
 #python3 -m keras_segmentation visualize_dataset --images_path="./demo/images_preped_test_small/" --segs_path="./demo/annotations_preped_test_small/" --n_classes=30
 model_name = []
@@ -27,9 +26,4 @@ for ib,ia in enumerate(model):
         checkpoints_path = checkpoints_path[ib] 
     )
 
-# predict_multiple(
-#     checkpoints_path=checkpoints_path[0],
-#     inp_dir="demo/images_preped_test_small/",
-#     out_dir="demo/output"
-# )
 

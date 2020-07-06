@@ -1,128 +1,45 @@
-# Image Segmentation Keras : Implementation of Segnet, FCN, UNet, PSPNet and other models in Keras.
+# Fork from https://github.com/divamgupta/image-segmentation-keras
 
-[![PyPI version](https://badge.fury.io/py/keras-segmentation.svg)](https://badge.fury.io/py/keras-segmentation)
-[![Downloads](https://pepy.tech/badge/keras-segmentation)](https://pepy.tech/project/keras-segmentation)
-[![Build Status](https://travis-ci.org/divamgupta/image-segmentation-keras.png)](https://travis-ci.org/divamgupta/image-segmentation-keras)
-[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/divamgupta)
-[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
-[![Twitter](https://img.shields.io/twitter/url.svg?label=Follow%20%40divamgupta&style=social&url=https%3A%2F%2Ftwitter.com%2Fdivamgupta)](https://twitter.com/divamgupta)
-
-
+# Image Segmentation Keras : Implementation of Segnet, FCN, UNet, PSPNet in Keras.
 
 Implementation of various Deep Image Segmentation models in keras.
 
 Link to the full blog post with tutorial : https://divamgupta.com/image-segmentation/2019/06/06/deep-learning-semantic-segmentation-keras.html
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/sunshineatnoon/Paper-Collection/master/images/FCN1.png" width="50%" >
-</p>
-
-## Our Other Repositories
-- [Attention based Language Translation in Keras](https://github.com/divamgupta/attention-translation-keras)
-- [Ladder Network in Keras](https://github.com/divamgupta/ladder_network_keras)  model achives 98% test accuracy on MNIST with just 100 labeled examples
-
-### Contributors
-
-Divam Gupta : https://divamgupta.com [![Twitter](https://img.shields.io/twitter/url.svg?label=Follow%20%40divamgupta&style=social&url=https%3A%2F%2Ftwitter.com%2Fdivamgupta)](https://twitter.com/divamgupta)
-
-
-[Rounaq Jhunjhunu wala](https://github.com/rjalfa)
-
-
-
-## Models
+# Models
 
 Following models are supported:
 
 | model_name       | Base Model        | Segmentation Model |
 |------------------|-------------------|--------------------|
-| fcn_8            | Vanilla CNN       | FCN8               |
-| fcn_32           | Vanilla CNN       | FCN8               |
-| fcn_8_vgg        | VGG 16            | FCN8               |
 | fcn_32_vgg       | VGG 16            | FCN32              |
-| fcn_8_resnet50   | Resnet-50         | FCN32              |
-| fcn_32_resnet50  | Resnet-50         | FCN32              |
-| fcn_8_mobilenet  | MobileNet         | FCN32              |
-| fcn_32_mobilenet | MobileNet         | FCN32              |
-| pspnet           | Vanilla CNN       | PSPNet             |
 | vgg_pspnet       | VGG 16            | PSPNet             |
-| resnet50_pspnet  | Resnet-50         | PSPNet             |
-| unet_mini        | Vanilla Mini CNN  | U-Net              |
-| unet             | Vanilla CNN       | U-Net              |
 | vgg_unet         | VGG 16            | U-Net              |
-| resnet50_unet    | Resnet-50         | U-Net              |
-| mobilenet_unet   | MobileNet         | U-Net              |
-| segnet           | Vanilla CNN       | Segnet             |
 | vgg_segnet       | VGG 16            | Segnet             |
-| resnet50_segnet  | Resnet-50         | Segnet             |
-| mobilenet_segnet | MobileNet         | Segnet             |
 
 
-Example results for the pre-trained models provided :
+# Getting Started
 
-Input Image            |  Output Segmentation Image
-:-------------------------:|:-------------------------:
-![](sample_images/1_input.jpg)  |  ![](sample_images/1_output.png)
-![](sample_images/3_input.jpg)  |  ![](sample_images/3_output.png)
-
-
-## Getting Started
-
-### Prerequisites
+## Prerequisites
 
 * Keras 2.0
 * opencv for python
 * Theano / Tensorflow / CNTK
 
 ```shell
-apt-get install -y libsm6 libxext6 libxrender-dev
-pip install opencv-python
+sudo apt-get install -y libsm6 libxext6 libxrender-dev
+pip3 install opencv-python
 ```
 
-### Installing
-
-Install the module
-
-```shell
-pip install keras-segmentation
-```
-
-or 
-
-```shell
-pip install git+https://github.com/divamgupta/image-segmentation-keras
-```
-
-### or
+## Installing
 
 ```shell
 git clone https://github.com/divamgupta/image-segmentation-keras
 cd image-segmentation-keras
-python setup.py install
+python3 setup.py install
 ```
 
-
-## Pre-trained models:
-```python
-from keras_segmentation.pretrained import pspnet_50_ADE_20K , pspnet_101_cityscapes, pspnet_101_voc12
-
-model = pspnet_50_ADE_20K() # load the pretrained model trained on ADE20k dataset
-
-model = pspnet_101_cityscapes() # load the pretrained model trained on Cityscapes dataset
-
-model = pspnet_101_voc12() # load the pretrained model trained on Pascal VOC 2012 dataset
-
-# load any of the 3 pretrained models
-
-out = model.predict_segmentation(
-    inp="input_image.jpg",
-    out_fname="out.png"
-)
-
-```
-
-
-### Preparing the data for training
+## Preparing the data for training
 
 You need to make two folders
 
@@ -160,7 +77,7 @@ You will get a folder named dataset1/
 
 ## Using the python module
 
-You can import keras_segmentation in  your python script and use the API
+### You can import keras_segmentation in  your python script and use the API
 
 ```python
 from keras_segmentation.models.unet import vgg_unet
@@ -185,12 +102,25 @@ plt.imshow(out)
 print(model.evaluate_segmentation( inp_images_dir="dataset1/images_prepped_test/"  , annotations_dir="dataset1/annotations_prepped_test/" ) )
 
 ```
-
-
-## Usage via command line
+### For training
+Config in file `test.py` and run 
+```python
+python3 test.py
+```
+### For predict
+Config in file `testLoadModel.py` and run 
+```python
+python3 testLoadModel.py
+```
+### For visualize result in predict
+Config in file `test2.py` and run 
+```python
+python3 test2.py
+```
+# Usage via command line
 You can also use the tool just using command line
 
-### Visualizing the prepared data
+## Visualizing the prepared data
 
 You can also visualize your prepared annotations for verification of the prepared data.
 
@@ -210,8 +140,7 @@ python -m keras_segmentation visualize_dataset \
 ```
 
 
-
-### Training the Model
+## Training the Model
 
 To train the model run the following command:
 
@@ -231,8 +160,7 @@ python -m keras_segmentation train \
 Choose model_name from the table above
 
 
-
-### Getting the predictions
+## Getting the predictions
 
 To get the predictions of a trained model
 
@@ -244,24 +172,7 @@ python -m keras_segmentation predict \
 
 ```
 
-
-
-### Video inference
-
-To get predictions of a video
-```shell
-python -m keras_segmentation predict_video \
- --checkpoints_path="path_to_checkpoints" \
- --input="path_to_video" \
- --output_file="path_for_save_inferenced_video" \
- --display
-```
-
-If you want to make predictions on your webcam, don't use `--input`, or pass your device number: `--input 0`  
-`--display` opens a window with the predicted video. Remove this argument when using a headless system.
-
-
-### Model Evaluation 
+## Model Evaluation 
 
 To get the IoU scores 
 
@@ -274,7 +185,7 @@ python -m keras_segmentation evaluate_model \
 
 
 
-## Fine-tuning from existing segmentation model
+# Fine-tuning from existing segmentation model
 
 The following example shows how to fine-tune a model with 10 classes .
 
@@ -298,8 +209,9 @@ new_model.train(
 
 ```
 
-## Projects using keras-segmentation
+# Projects using keras-segmentation
 Here are a few projects which are using our library :
+* https://github.com/quyvsquy/demoUnet_Segnet_FCN_PSPnet_  **This Project**
 * https://github.com/SteliosTsop/QF-image-segmentation-keras [paper](https://arxiv.org/pdf/1908.02242.pdf)
 * https://github.com/willembressers/bouquet_quality
 * https://github.com/jqueguiner/image-segmentation
@@ -333,6 +245,5 @@ Here are a few projects which are using our library :
 * https://github.com/Alpha-Monocerotis/PDF_FigureTable_Extraction
 * https://github.com/rusito-23/mobile_unet_segmentation
 * https://github.com/Philliec459/ThinSection-image-segmentation-keras
-
 If you use our code in a publicly available project, please add the link here ( by posting an issue or creating a PR )
 
