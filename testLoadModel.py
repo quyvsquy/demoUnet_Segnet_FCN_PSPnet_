@@ -3,17 +3,17 @@ from keras_segmentation.data_utils.visualize_dataset import visualize_segmentati
 import cv2
 
 checkpoints_path = []
-checkpoints_path.append("./saveModel/new/vgg_unet_1")
-checkpoints_path.append("./saveModel/new/vgg_pspnet_1")
-checkpoints_path.append("./saveModel/new/vgg_segnet_1")
-checkpoints_path.append("./saveModel/new/fcn_32_vgg_1")
+checkpoints_path.append("./saveModel/new1/vgg_unet_1")
+# checkpoints_path.append("./saveModel/new/vgg_pspnet_1")
+# checkpoints_path.append("./saveModel/new/vgg_segnet_1")
+# checkpoints_path.append("./saveModel/new/fcn_32_vgg_1")
 
-# for ia in checkpoints_path:
-# 	predict_multiple(
-# 		checkpoints_path=ia,
-# 		inp_dir="demo/images_preped_test_small",
-# 		out_dir="demo/output/new1"
-# 	)
+for ia in checkpoints_path:
+	predict_multiple(
+		checkpoints_path=ia,
+		inp_dir="demo/images_preped_test_small",
+		out_dir="demo/output/new1"
+	)
 
 # view summary
 # for ia in checkpoints_path:
@@ -22,7 +22,8 @@ checkpoints_path.append("./saveModel/new/fcn_32_vgg_1")
 
 # visuallize
 # visualize_segmentation_dataset(images_path="./test/example_dataset/images_prepped_train",segs_path="./test/example_dataset/annotations_prepped_train",n_classes=6,no_show=False)
-# for seg_img, seg_path in visualize_segmentation_dataset(images_path="demo/images_preped_test_small/",segs_path="demo/annotations_preped_test_small/",n_classes=30,no_show=True):
+# visualize_segmentation_dataset(images_path="demo/images_preped_test_small/",segs_path="demo/annotations_preped_test_small/",n_classes=6,no_show=True)
+# for seg_img, seg_path in visualize_segmentation_dataset(images_path="demo/images_preped_test_small/",segs_path="demo/annotations_preped_test_small/",n_classes=6,no_show=True):
 # 	cv2.imwrite(f"demo/ground_truth/{seg_path.split('/')[-1]}", seg_img)
 
 

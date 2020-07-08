@@ -17,7 +17,7 @@ except ImportError:
 from ..models.config import IMAGE_ORDERING
 from .augmentation import augment_seg
 
-DATA_LOADER_SEED = 99
+DATA_LOADER_SEED = 20
 
 random.seed(DATA_LOADER_SEED)
 class_colors = [(random.randint(0, 255), random.randint(
