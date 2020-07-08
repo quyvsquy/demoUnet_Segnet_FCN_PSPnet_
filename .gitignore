@@ -3,6 +3,8 @@ dataset1/
 saveModel/
 script_for_colab/
 dataset1.zip
+dataset_30000_split.zip
+dataset_30000/
 # demo/
 sync.expect
 

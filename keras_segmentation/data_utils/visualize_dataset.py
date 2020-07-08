@@ -21,6 +21,8 @@ def _get_colored_segmentation_image(img, seg, colors,
         img, seg[:, :, 0] = augment_seg(img, seg[:, :, 0])
 
     for c in range(n_classes):
+        print(((seg[:, :, 0] == c)
+                             * (colors[c][0])).astype('uint8'))
         seg_img[:, :, 0] += ((seg[:, :, 0] == c)
                              * (colors[c][0])).astype('uint8')
         seg_img[:, :, 1] += ((seg[:, :, 0] == c)
@@ -53,6 +55,7 @@ def visualize_segmentation_dataset(images_path, segs_path, n_classes,
                                                     img, seg, colors,
                                                     n_classes,
                                                     do_augment=do_augment)
+            break##################################
             if not no_show:
                 print("Please press any key to display the next image")
                 cv2.imshow("img", img)

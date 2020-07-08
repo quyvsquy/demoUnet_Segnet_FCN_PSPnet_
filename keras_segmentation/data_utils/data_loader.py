@@ -17,7 +17,7 @@ except ImportError:
 from ..models.config import IMAGE_ORDERING
 from .augmentation import augment_seg
 
-DATA_LOADER_SEED = 0
+DATA_LOADER_SEED = 99
 
 random.seed(DATA_LOADER_SEED)
 class_colors = [(random.randint(0, 255), random.randint(
@@ -102,7 +102,7 @@ def get_image_array(image_input,
         img[:, :, 0] -= 103.939
         img[:, :, 1] -= 116.779
         img[:, :, 2] -= 123.68
-        img = img[:, :, ::-1]
+        img = img[:, :, ::-1] # Transform (blue, green, red) to (red, green, blue)
     elif imgNorm == "divide":
         img = cv2.resize(img, (width, height))
         img = img.astype(np.float32)
@@ -115,7 +115,7 @@ def get_image_array(image_input,
 
 def get_segmentation_array(image_input, nClasses,
                            width, height, no_reshape=False):
-    """ Load segmentation array from input """
+    """ Load segmentation array from input; Change to one hot vector"""
 
     seg_labels = np.zeros((height, width, nClasses))
 
@@ -133,8 +133,7 @@ def get_segmentation_array(image_input, nClasses,
                               .format(str(type(image_input))))
 
     img = cv2.resize(img, (width, height), interpolation=cv2.INTER_NEAREST)
-    img = img[:, :, 0]
-
+    img = img[:, :, 0] #Get one channel because red green blue is the same on ground truth
     for c in range(nClasses):
         seg_labels[:, :, c] = (img == c).astype(int)
 
@@ -145,7 +144,7 @@ def get_segmentation_array(image_input, nClasses,
 
 
 def verify_segmentation_dataset(images_path, segs_path,
-                                n_classes, show_all_errors=False):
+                                n_classes, show_all_errors=False, is_resize_image_if_diff_dimensions=True):
     try:
         img_seg_pairs = get_pairs_from_paths(images_path, segs_path)
         if not len(img_seg_pairs):
@@ -160,12 +159,25 @@ def verify_segmentation_dataset(images_path, segs_path,
             seg = cv2.imread(seg_fn)
             # Check dimensions match
             if not img.shape == seg.shape:
-                return_value = False
-                print("The size of image {0} and its segmentation {1} "
-                      "doesn't match (possibly the files are corrupt)."
-                      .format(im_fn, seg_fn))
-                if not show_all_errors:
-                    break
+                if not is_resize_image_if_diff_dimensions:
+                    return_value = False
+                    print("The size of image {0} and its segmentation {1} "
+                        "doesn't match (possibly the files are corrupt)."
+                        .format(im_fn, seg_fn))
+                    if not show_all_errors:
+                        break
+                else:
+                    img = cv2.resize(img,(seg.shape[0],seg.shape[1]))
+                    cv2.imwrite(im_fn,img)
+                    max_pixel_value = np.max(seg[:, :, 0])
+                    if max_pixel_value >= n_classes:
+                        return_value = False
+                        print("The pixel values of the segmentation image {0} "
+                            "violating range [0, {1}]. "
+                            "Found maximum pixel value {2}"
+                            .format(seg_fn, str(n_classes - 1), max_pixel_value))
+                        if not show_all_errors:
+                            break
             else:
                 max_pixel_value = np.max(seg[:, :, 0])
                 if max_pixel_value >= n_classes:

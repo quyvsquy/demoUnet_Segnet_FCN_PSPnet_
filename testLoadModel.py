@@ -21,14 +21,15 @@ checkpoints_path.append("./saveModel/new/fcn_32_vgg_1")
 # 	print(model.summary())
 
 # visuallize
+# visualize_segmentation_dataset(images_path="./test/example_dataset/images_prepped_train",segs_path="./test/example_dataset/annotations_prepped_train",n_classes=6,no_show=False)
 # for seg_img, seg_path in visualize_segmentation_dataset(images_path="demo/images_preped_test_small/",segs_path="demo/annotations_preped_test_small/",n_classes=30,no_show=True):
 # 	cv2.imwrite(f"demo/ground_truth/{seg_path.split('/')[-1]}", seg_img)
 
 
-for ia in checkpoints_path:
-	output = evaluate(
-		checkpoints_path=ia,
-		inp_images_dir="dataset1/images_prepped_test/",
-		annotations_dir = "dataset1/annotations_prepped_test/",
-	)
-	print(output)
+# for ia in checkpoints_path:
+# 	output = evaluate(
+# 		checkpoints_path=ia,
+# 		inp_images_dir="dataset1/images_prepped_test/",
+# 		annotations_dir = "dataset1/annotations_prepped_test/",
+# 	)
+# 	print(output)
