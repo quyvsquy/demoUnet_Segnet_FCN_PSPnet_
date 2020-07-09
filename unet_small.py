@@ -1,6 +1,5 @@
 from keras_segmentation.models.all_models import model_from_name
 
-#python3 -m keras_segmentation visualize_dataset --images_path="./demo/images_preped_test_small/" --segs_path="./demo/annotations_preped_test_small/" --n_classes=30
 model_name = []
 model = []
 model_name.append("vgg_unet")
@@ -18,19 +17,18 @@ for ia in model_name:
 
 for ib,ia in enumerate(model):
     ia.train(
-        batch_size = 2,
-        epochs= 5,
-        # steps_per_epoch = 367 // 5,
-        # train_images =  "dataset1/images_prepped_train/",
-        # train_annotations = "dataset1/annotations_prepped_train/",
-        train_images =  "../test/example_dataset/train",
-        train_annotations = "../test/example_dataset/mask_train",
+        verify_dataset = False,
+        batch_size = 5,
+        epochs= 10,
+        steps_per_epoch = 200,
+        train_images =  "../datasmall/train",
+        train_annotations = "../datasmall/mask_train",
         validate = True,
-        val_images = "../val",
-        val_annotations = "../mask_val",
-        val_batch_size = 5,
-        # val_steps_per_epoch = 512,
-        gen_use_multiprocessing = True,
+        val_images = "../datasmall/val",
+        val_annotations = "../datasmall/mask_val",
+        val_batch_size = 2,
+        val_steps_per_epoch = 50,
+        # gen_use_multiprocessing = True,
         checkpoints_path = checkpoints_path[ib] 
     )
 
