@@ -3,17 +3,17 @@ from keras_segmentation.data_utils.visualize_dataset import visualize_segmentati
 import cv2
 
 checkpoints_path = []
-checkpoints_path.append("./saveModel/new1/vgg_unet_1")
+checkpoints_path.append("./saveModel/vgg_unet_1")
 # checkpoints_path.append("./saveModel/new/vgg_pspnet_1")
 # checkpoints_path.append("./saveModel/new/vgg_segnet_1")
 # checkpoints_path.append("./saveModel/new/fcn_32_vgg_1")
 
-for ia in checkpoints_path:
-	predict_multiple(
-		checkpoints_path=ia,
-		inp_dir="demo/images_preped_test_small",
-		out_dir="demo/output/new1"
-	)
+# for ia in checkpoints_path:
+# 	predict_multiple(
+# 		checkpoints_path=ia,
+# 		inp_dir="../datasmall/test",
+# 		out_dir="./demo"
+# 	)
 
 # view summary
 # for ia in checkpoints_path:
@@ -27,10 +27,10 @@ for ia in checkpoints_path:
 # 	cv2.imwrite(f"demo/ground_truth/{seg_path.split('/')[-1]}", seg_img)
 
 
-# for ia in checkpoints_path:
-# 	output = evaluate(
-# 		checkpoints_path=ia,
-# 		inp_images_dir="dataset1/images_prepped_test/",
-# 		annotations_dir = "dataset1/annotations_prepped_test/",
-# 	)
-# 	print(output)
+for ia in checkpoints_path:
+	output = evaluate(
+		checkpoints_path=ia,
+		inp_images_dir="../datasmall/test",
+		annotations_dir = "../datasmall/mask_test",
+	)
+	print(output)
