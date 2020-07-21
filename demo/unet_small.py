@@ -1,5 +1,5 @@
 from keras_segmentation.models.all_models import model_from_name
-
+import pickle
 model_name = []
 model = []
 model_name.append("vgg_unet")
@@ -10,7 +10,7 @@ for ia in model_name:
     model.append(model_from_name[ia](n_classes=12,  input_height=384, input_width=576))
 
 for ib,ia in enumerate(model):
-    ia.train(
+    H = ia.train(
         verify_dataset = False,
         batch_size = 3,
         epochs= 10,
@@ -26,4 +26,5 @@ for ib,ia in enumerate(model):
         checkpoints_path = checkpoints_path[ib] 
     )
 
+    pickle.dump(H,open(f"./saveModel/His/unet_{ib}","wb"))
 
