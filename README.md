@@ -34,9 +34,7 @@ pip3 install opencv-python
 ## Installing
 
 ```shell
-git clone https://github.com/divamgupta/image-segmentation-keras
-cd image-segmentation-keras
-python3 setup.py install
+pip3 install -r requirements.txt
 ```
 
 ## Preparing the data for training

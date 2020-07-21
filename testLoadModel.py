@@ -4,16 +4,16 @@ import cv2
 
 checkpoints_path = []
 checkpoints_path.append("./saveModel/vgg_unet_1")
-# checkpoints_path.append("./saveModel/new/vgg_pspnet_1")
-# checkpoints_path.append("./saveModel/new/vgg_segnet_1")
-# checkpoints_path.append("./saveModel/new/fcn_32_vgg_1")
+checkpoints_path.append("./saveModel/vgg_pspnet_1")
+checkpoints_path.append("./saveModel/vgg_segnet_1")
+checkpoints_path.append("./saveModel/fcn_32_vgg_1")
 
-# for ia in checkpoints_path:
-# 	predict_multiple(
-# 		checkpoints_path=ia,
-# 		inp_dir="../datasmall/test",
-# 		out_dir="./demo"
-# 	)
+for ia in checkpoints_path:
+	predict_multiple(
+		checkpoints_path=ia,
+		inp_dir="./demo/test",
+		out_dir="./demo/predict"
+	)
 
 # view summary
 # for ia in checkpoints_path:
@@ -27,10 +27,10 @@ checkpoints_path.append("./saveModel/vgg_unet_1")
 # 	cv2.imwrite(f"demo/ground_truth/{seg_path.split('/')[-1]}", seg_img)
 
 
-for ia in checkpoints_path:
-	output = evaluate(
-		checkpoints_path=ia,
-		inp_images_dir="../datasmall/test",
-		annotations_dir = "../datasmall/mask_test",
-	)
-	print(output)
+# for ia in checkpoints_path:
+# 	output = evaluate(
+# 		checkpoints_path=ia,
+# 		inp_images_dir="../datasmall/test",
+# 		annotations_dir = "../datasmall/mask_test",
+# 	)
+# 	print(output)

@@ -21,6 +21,7 @@ def _get_colored_segmentation_image(img, seg, colors,
         img, seg[:, :, 0] = augment_seg(img, seg[:, :, 0])
 
     for c in range(n_classes):
+        print(f"class {c}: color [{colors[c][2],colors[c][1],colors[c][0]}]") ################################################ Remove Here ################################################
         seg_img[:, :, 0] += ((seg[:, :, 0] == c)
                              * (colors[c][0])).astype('uint8')
         seg_img[:, :, 1] += ((seg[:, :, 0] == c)
@@ -49,6 +50,7 @@ def visualize_segmentation_dataset(images_path, segs_path, n_classes,
             seg = cv2.imread(seg_fn)
             print("Found the following classes in the segmentation image:",
                   np.unique(seg))
+            # if len(np.unique(seg)) == 12: print(im_fn)
             img, seg_img = _get_colored_segmentation_image(
                                                     img, seg, colors,
                                                     n_classes,
@@ -60,6 +62,7 @@ def visualize_segmentation_dataset(images_path, segs_path, n_classes,
                 cv2.waitKey()
             else:
                 listSeg_img.append((seg_img, seg_fn))
+            # break ################################################ Remove Here ################################################
         return listSeg_img
     except DataLoaderError as e:
         print("Found error during data loading\n{0}".format(str(e)))
