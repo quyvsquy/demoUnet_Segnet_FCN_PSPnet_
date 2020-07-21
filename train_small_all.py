@@ -19,7 +19,7 @@ for ia in model_name:
 for ib,ia in enumerate(model):
     ia.train(
         batch_size = 3,
-        epochs= 10,
+        epochs= 50,
         steps_per_epoch = 337 // 3,
         train_images =  "dataset1/train",
         train_annotations = "dataset1/ano_train/",
