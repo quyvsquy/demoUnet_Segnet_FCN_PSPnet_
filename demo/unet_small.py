@@ -7,7 +7,7 @@ checkpoints_path = []
 checkpoints_path.append("./saveModel/vgg_unet_1")
 
 for ia in model_name:
-    model.append(model_from_name[ia](n_classes=12,  input_height=512, input_width=512))
+    model.append(model_from_name[ia](n_classes=12,  input_height=384, input_width=576))
 
 for ib,ia in enumerate(model):
     ia.train(

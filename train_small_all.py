@@ -14,7 +14,7 @@ checkpoints_path.append("./saveModel/vgg_segnet_1")
 checkpoints_path.append("./saveModel/fcn_32_vgg_1")
 
 for ia in model_name:
-    model.append(model_from_name[ia](n_classes=6 ,  input_height=576, input_width=576))
+    model.append(model_from_name[ia](n_classes=6 ,  input_height=384, input_width=576))
 
 for ib,ia in enumerate(model):
     ia.train(
