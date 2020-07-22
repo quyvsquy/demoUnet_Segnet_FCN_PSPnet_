@@ -1,0 +1,68 @@
+root@32152a8b4514:/content/gdrive/My Drive/HKVI/CS431_CacKyThuatHocSauVaUngDung/demoUnet_Segnet_FCN_PSPnet_# python3 evaluation_small_all.py
+Using TensorFlow backend.
+2020-07-22 03:43:29.243804: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-07-22 03:43:30.780826: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcuda.so.1
+2020-07-22 03:43:30.835305: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-07-22 03:43:30.836130: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties:
+pciBusID: 0000:00:04.0 name: Tesla T4 computeCapability: 7.5
+coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.73GiB deviceMemoryBandwidth: 298.08GiB/s
+2020-07-22 03:43:30.836246: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-07-22 03:43:30.838250: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-07-22 03:43:30.840267: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-07-22 03:43:30.840784: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-07-22 03:43:30.842936: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-07-22 03:43:30.844226: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-07-22 03:43:30.848655: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-07-22 03:43:30.848845: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-07-22 03:43:30.849622: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-07-22 03:43:30.850263: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-07-22 03:43:30.850712: I tensorflow/core/platform/cpu_feature_guard.cc:143] Your CPU supports instructions that this TensorFlow binary was not compiled to use: AVX512F
+2020-07-22 03:43:30.857419: I tensorflow/core/platform/profile_utils/cpu_utils.cc:102] CPU Frequency: 2000115000 Hz
+2020-07-22 03:43:30.857717: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x7fae34000b20 initialized for platform Host (this does not guarantee that XLA will be used). Devices:
+2020-07-22 03:43:30.857755: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Host, Default Version
+2020-07-22 03:43:30.961646: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-07-22 03:43:30.962456: I tensorflow/compiler/xla/service/service.cc:168] XLA service 0x51e1440 initialized for platform CUDA (this does not guarantee that XLA will be used). Devices:
+2020-07-22 03:43:30.962502: I tensorflow/compiler/xla/service/service.cc:176]   StreamExecutor device (0): Tesla T4, Compute Capability 7.5
+2020-07-22 03:43:30.962807: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-07-22 03:43:30.963431: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1561] Found device 0 with properties:
+pciBusID: 0000:00:04.0 name: Tesla T4 computeCapability: 7.5
+coreClock: 1.59GHz coreCount: 40 deviceMemorySize: 14.73GiB deviceMemoryBandwidth: 298.08GiB/s
+2020-07-22 03:43:30.963539: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-07-22 03:43:30.963590: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+2020-07-22 03:43:30.963624: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcufft.so.10
+2020-07-22 03:43:30.963655: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcurand.so.10
+2020-07-22 03:43:30.963683: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusolver.so.10
+2020-07-22 03:43:30.963711: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcusparse.so.10
+2020-07-22 03:43:30.963740: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-07-22 03:43:30.963857: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-07-22 03:43:30.964552: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-07-22 03:43:30.965098: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1703] Adding visible gpu devices: 0
+2020-07-22 03:43:30.965182: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudart.so.10.1
+2020-07-22 03:43:31.371617: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1102] Device interconnect StreamExecutor with strength 1 edge matrix:
+2020-07-22 03:43:31.371680: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1108]      0
+2020-07-22 03:43:31.371694: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1121] 0:   N
+2020-07-22 03:43:31.372221: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-07-22 03:43:31.373171: I tensorflow/stream_executor/cuda/cuda_gpu_executor.cc:981] successful NUMA node read from SysFS had negative value (-1), but there must be at least one NUMA node, so returning NUMA node zero
+2020-07-22 03:43:31.373912: I tensorflow/core/common_runtime/gpu/gpu_device.cc:1247] Created TensorFlow device (/job:localhost/replica:0/task:0/device:GPU:0 with 13968 MB memory) -> physical GPU (device: 0, name: Tesla T4, pci bus id: 0000:00:04.0, compute capability: 7.5)
+loaded weights  ./saveModel/vgg_unet_1.49
+0it [00:00, ?it/s]2020-07-22 03:43:32.479684: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcudnn.so.7
+2020-07-22 03:43:33.843720: I tensorflow/stream_executor/platform/default/dso_loader.cc:44] Successfully opened dynamic library libcublas.so.10
+101it [00:10, 10.02it/s]
+vgg_unet | {'frequency_weighted_IU': 0.8648196555244456, 'mean_IU': 0.649216259204122, 'class_wise_IU': array([0.94311313, 0.84254145, 0.06379909, 0.96666378, 0.85793586,
+       0.88719223, 0.42306398, 0.67166726, 0.77319019, 0.46025294,
+       0.65294487, 0.24823034])}
+loaded weights  ./saveModel/vgg_pspnet_1.49
+101it [00:05, 19.16it/s]
+vgg_pspnet | {'frequency_weighted_IU': 0.782964896115179, 'mean_IU': 0.4746507193513801, 'class_wise_IU': array([0.90784473, 0.75090785, 0.        , 0.92737976, 0.76142293,
+       0.85040501, 0.00335523, 0.36446614, 0.50693069, 0.14176308,
+       0.39099003, 0.09034319])}
+loaded weights  ./saveModel/vgg_segnet_1.49
+101it [00:07, 14.03it/s]
+vgg_segnet | {'frequency_weighted_IU': 0.8265903905931783, 'mean_IU': 0.5506948684665626, 'class_wise_IU': array([0.91643176, 0.82302067, 0.00177537, 0.94552648, 0.79117708,
+       0.87756141, 0.2764434 , 0.56640162, 0.54490477, 0.3038594 ,
+       0.35305247, 0.208184  ])}
+loaded weights  ./saveModel/fcn_32_vgg_1.49
+101it [00:22,  4.50it/s]
+fcn_32_vgg | {'frequency_weighted_IU': 0.8010913599194006, 'mean_IU': 0.4979638620280456, 'class_wise_IU': array([0.88267829, 0.78506823, 0.00161462, 0.93569392, 0.80726636,
+       0.85896012, 0.24235228, 0.48805458, 0.52674512, 0.05727171,
+       0.25764969, 0.13221141])}

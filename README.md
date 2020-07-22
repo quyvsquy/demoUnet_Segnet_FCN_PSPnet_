@@ -2,9 +2,9 @@
 
 # Image Segmentation Keras : Implementation of Segnet, FCN, UNet, PSPNet in Keras.
 
-Implementation of various Deep Image Segmentation models in keras.
-
-Link to the full blog post with tutorial : https://divamgupta.com/image-segmentation/2019/06/06/deep-learning-semantic-segmentation-keras.html
+![alt text](./demo/KetQua.png)
+![alt text](./demo/chart/acc.png)
+![alt text](./demo/chart/loss.png)
 
 # Models
 
@@ -68,7 +68,7 @@ Only use bmp or png format for the annotation images.
 
 Download and extract the following:
 
-https://drive.google.com/file/d/0B0d9ZiqAgFkiOHR1NTJhWVJMNEU/view?usp=sharing
+https://drive.google.com/file/d/1HP9SM3zT1jKyE0GW9HMeo2eUGyin9lpw/view?usp=sharing
 
 You will get a folder named dataset1/
 
@@ -101,110 +101,24 @@ print(model.evaluate_segmentation( inp_images_dir="dataset1/images_prepped_test/
 
 ```
 ### For training
-Config in file `test.py` and run 
+Config in file `train_small_all.py` and run 
 ```python
-python3 test.py
+python3 train_small_all.py
 ```
 ### For predict
 Config in file `testLoadModel.py` and run 
 ```python
 python3 testLoadModel.py
 ```
+### For evalution
+Config in file `evaluation_small_all.py` and run 
+```python
+python3 evaluation_small_all.py
+```
 ### For visualize result in predict
 Config in file `test2.py` and run 
 ```python
 python3 test2.py
-```
-# Usage via command line
-You can also use the tool just using command line
-
-## Visualizing the prepared data
-
-You can also visualize your prepared annotations for verification of the prepared data.
-
-
-```shell
-python -m keras_segmentation verify_dataset \
- --images_path="dataset1/images_prepped_train/" \
- --segs_path="dataset1/annotations_prepped_train/"  \
- --n_classes=50
-```
-
-```shell
-python -m keras_segmentation visualize_dataset \
- --images_path="dataset1/images_prepped_train/" \
- --segs_path="dataset1/annotations_prepped_train/"  \
- --n_classes=50
-```
-
-
-## Training the Model
-
-To train the model run the following command:
-
-```shell
-python -m keras_segmentation train \
- --checkpoints_path="path_to_checkpoints" \
- --train_images="dataset1/images_prepped_train/" \
- --train_annotations="dataset1/annotations_prepped_train/" \
- --val_images="dataset1/images_prepped_test/" \
- --val_annotations="dataset1/annotations_prepped_test/" \
- --n_classes=50 \
- --input_height=320 \
- --input_width=640 \
- --model_name="vgg_unet"
-```
-
-Choose model_name from the table above
-
-
-## Getting the predictions
-
-To get the predictions of a trained model
-
-```shell
-python -m keras_segmentation predict \
- --checkpoints_path="path_to_checkpoints" \
- --input_path="dataset1/images_prepped_test/" \
- --output_path="path_to_predictions"
-
-```
-
-## Model Evaluation 
-
-To get the IoU scores 
-
-```shell
-python -m keras_segmentation evaluate_model \
- --checkpoints_path="path_to_checkpoints" \
- --images_path="dataset1/images_prepped_test/" \
- --segs_path="dataset1/annotations_prepped_test/"
-```
-
-
-
-# Fine-tuning from existing segmentation model
-
-The following example shows how to fine-tune a model with 10 classes .
-
-```python
-from keras_segmentation.models.model_utils import transfer_weights
-from keras_segmentation.pretrained import pspnet_50_ADE_20K
-from keras_segmentation.models.pspnet import pspnet_50
-
-pretrained_model = pspnet_50_ADE_20K()
-
-new_model = pspnet_50( n_classes=51 )
-
-transfer_weights( pretrained_model , new_model  ) # transfer weights from pre-trained model to your model
-
-new_model.train(
-    train_images =  "dataset1/images_prepped_train/",
-    train_annotations = "dataset1/annotations_prepped_train/",
-    checkpoints_path = "/tmp/vgg_unet_1" , epochs=5
-)
-
-
 ```
 
 # Projects using keras-segmentation

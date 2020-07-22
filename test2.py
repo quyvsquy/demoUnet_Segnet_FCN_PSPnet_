@@ -2,12 +2,12 @@
 import matplotlib.pyplot as plt
 from PIL import Image
 from os import listdir
-listName = ['0016E5_07530','0016E5_08159']
+listName = ['0016E5_06210','0016E5_08159']
 listNameNet = ['vgg_unet','vgg_pspnet','vgg_segnet','fcn_32_vgg']
 # listNameNet = ['vgg_unet','vgg_pspnet','vgg_segnet']
-ground_truth = "demo/ground_truth"
-pre_dict = "demo/output/New"
-in_img = "demo/images_preped_test_small"
+ground_truth = "demo/ano_colors"
+pre_dict = "demo/predict"
+in_img = "demo/test"
 
 # fig=plt.figure(figsize=(16,5))
 fig=plt.figure()

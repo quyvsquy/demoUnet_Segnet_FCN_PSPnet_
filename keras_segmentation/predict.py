@@ -53,7 +53,7 @@ def get_colored_segmentation_image(seg_arr, n_classes, colors=class_colors):
 def get_legends(class_names, colors=class_colors):
 
     n_classes = len(class_names)
-    legend = np.zeros(((len(class_names) * 25) + 25, 125, 3),
+    legend = np.zeros(((len(class_names) * 25) + 25, 135, 3),
                       dtype="uint8") + 255
 
     class_names_colors = enumerate(zip(class_names[:n_classes],
@@ -63,7 +63,7 @@ def get_legends(class_names, colors=class_colors):
         color = [int(c) for c in color]
         cv2.putText(legend, class_name, (5, (i * 25) + 17),
                     cv2.FONT_HERSHEY_COMPLEX, 0.5, (0, 0, 0), 1)
-        cv2.rectangle(legend, (100, (i * 25)), (125, (i * 25) + 25),
+        cv2.rectangle(legend, (110, (i * 25)), (135, (i * 25) + 25),
                       tuple(color), -1)
 
     return legend

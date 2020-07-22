@@ -4,16 +4,21 @@ import cv2
 
 checkpoints_path = []
 checkpoints_path.append("./saveModel/vgg_unet_1")
-# checkpoints_path.append("./saveModel/vgg_pspnet_1")
-# checkpoints_path.append("./saveModel/vgg_segnet_1")
-# checkpoints_path.append("./saveModel/fcn_32_vgg_1")
+checkpoints_path.append("./saveModel/vgg_pspnet_1")
+checkpoints_path.append("./saveModel/vgg_segnet_1")
+checkpoints_path.append("./saveModel/fcn_32_vgg_1")
 
-# for ia in checkpoints_path:
-# 	predict_multiple(
-# 		checkpoints_path=ia,
-# 		inp_dir="./demo/test",
-# 		out_dir="./demo/predict"
-# 	)
+for ia in checkpoints_path:
+	predict_multiple(
+		checkpoints_path=ia,
+		inp_dir="./demo/test",
+		out_dir="./demo/predict",
+		show_legends = True,
+		class_names = ["sky", "building", "pole", "road", "sidewalk", "vegetation", "traffic_light", "fence", "car", "person", "rider", "static"],
+		# overlay_img = True, #Chồng 2 ảnh lên nhau
+		# prediction_width = 1024,
+		# prediction_height = 768
+	)
 
 # view summary
 # for ia in checkpoints_path:
@@ -27,10 +32,10 @@ checkpoints_path.append("./saveModel/vgg_unet_1")
 # 	cv2.imwrite(f"demo/ground_truth/{seg_path.split('/')[-1]}", seg_img)
 
 
-for ia in checkpoints_path:
-	output = evaluate(
-		checkpoints_path=ia,
-		inp_images_dir="./dataset1/test",
-		annotations_dir = "./dataset1/ano_test",
-	)
-	print(output)
+# for ia in checkpoints_path:
+# 	output = evaluate(
+# 		checkpoints_path=ia,
+# 		inp_images_dir="./dataset1/test",
+# 		annotations_dir = "./dataset1/ano_test",
+# 	)
+# 	print(output)

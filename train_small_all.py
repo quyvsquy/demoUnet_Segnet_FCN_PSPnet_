@@ -8,7 +8,7 @@ dictModels[1] = "vgg_pspnet"
 dictModels[2] = "vgg_segnet"
 dictModels[3] = "fcn_32_vgg"
 
-for ia in len(dictModels):
+for ia in range(len(dictModels)):
     t = model_from_name[dictModels[ia]](n_classes=12 ,  input_height=384, input_width=576)
     H = t.train(
         verify_dataset = False,
